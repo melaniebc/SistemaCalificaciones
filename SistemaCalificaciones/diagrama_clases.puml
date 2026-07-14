@@ -1,0 +1,103 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package usuarios {
+  abstract class Usuario {
+    - id: String
+    - nombre: String
+    - correo: String
+    - password: String
+    + login(correo, password): boolean
+    + obtenerPerfil(): String
+  }
+
+  class Estudiante {
+    - carrera: Carrera
+    - nivel: int
+    + verNota(materia): String
+  }
+
+  class Profesor {
+    - departamento: String
+    - materiasAsignadas: List<Materia>
+    + registrarNotas(...): boolean
+    + modificarNotas(...): boolean
+  }
+
+  class Administrador {
+    - areaResponsable: String
+    + registrarEstudiante(...): void
+    + asignarEstudianteAMateria(...): void
+  }
+
+  Usuario <|-- Estudiante
+  Usuario <|-- Profesor
+  Usuario <|-- Administrador
+}
+
+package academico {
+  class Carrera {
+    - codigo: String
+    - nombre: String
+    - materias: List<Materia>
+  }
+
+  class Materia {
+    - codigo: String
+    - nombreMateria: String
+    - paralelo: String
+    - periodo: String
+    - estudiantes: List<Estudiante>
+    - registrosNotas: List<RegistroNota>
+    - historialNotas: List<HistorialNota>
+    + registrarNotas(...): boolean
+    + modificarNotas(...): boolean
+  }
+}
+
+package evaluacion {
+  interface IEvaluador {
+    + calcularEstado(promedio): String
+  }
+
+  class RegistroNota {
+    - nota1: float
+    - nota2: float
+    - nota3: float
+    - observacion: String
+    - fechaRegistro: LocalDateTime
+    + calcularPromedio(): float
+    + calcularCodigoAprobacion(): String
+  }
+
+  class HistorialNota {
+    - notaAnterior: float
+    - notaNueva: float
+    - motivo: String
+    - fechaCambio: LocalDateTime
+  }
+
+  IEvaluador <|.. RegistroNota
+}
+
+package servicios {
+  class CalificacionService
+  class PersistenciaService
+  class ReporteService
+}
+
+package util {
+  class SimplePdfGenerator
+}
+
+Carrera "1" o-- "*" Materia
+Materia "1" o-- "1" Profesor
+Materia "1" o-- "*" Estudiante
+Materia "1" *-- "*" RegistroNota
+Materia "1" *-- "*" HistorialNota
+Estudiante "1" --> "1" Carrera
+Profesor "1" --> "*" Materia
+ReporteService --> SimplePdfGenerator
+CalificacionService --> Profesor
+PersistenciaService --> Materia
+@enduml
