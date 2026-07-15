@@ -38,7 +38,7 @@ El proyecto sigue una arquitectura en capas que separa claramente la lógica de 
 4. **Ejecución:** Ejecuta el método `main` en la clase `app/SistemaCalificacionesGUI`.
 
 
-# 👥 Autores
+## 👥 Autores
 Trabajo práctico desarrollado para la materia de Arquitectura de Computadoras (GR1CD) - Escuela Politécnica Nacional:
 
 Melanie A. Buenaño - melanie.buenano@epn.edu.ec
