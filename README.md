@@ -37,5 +37,15 @@ El proyecto sigue una arquitectura en capas que separa claramente la lógica de 
 3. **Conexión:** Configura tus credenciales en `servicios/ConexionBD.java`.
 4. **Ejecución:** Ejecuta el método `main` en la clase `app/SistemaCalificacionesGUI`.
 
----
-*Desarrollado como proyecto académico de Programación II - Escuela Politécnica Nacional (EPN).*
+
+# 👥 Autores
+Trabajo práctico desarrollado para la materia de Arquitectura de Computadoras (GR1CD) - Escuela Politécnica Nacional:
+
+Melanie A. Buenaño - melanie.buenano@epn.edu.ec
+
+Stefano A. Cabezas - stefano.cabezas@epn.edu.ec
+
+Zander K. Castillo - zander.castillo@epn.edu.ec
+
+Viviana M. Guerrón - viviana.guerron@epn.edu.ec
+
